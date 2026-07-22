@@ -1,463 +1,1113 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HeaYee — Internationally Certified Smile Design</title>
-<meta name="description" content="Premium dental veneers in Shanghai using certified German and American ceramics, a DSD-certified smile designer, in a single 5–7 day trip.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --porcelain: #FAF6EF;
-    --porcelain-dim: #F1EBDD;
-    --ink: #1C2B29;
-    --ink-soft: #3C4C49;
-    --jade: #3C6E63;
-    --jade-deep: #23433B;
-    --glaze: #B9814B;
-    --glaze-soft: #E4C9A4;
-    --line: #D9D0BC;
-    --white: #FFFFF9;
-    --radius: 2px;
-    --max: 1120px;
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--porcelain);
-    color:var(--ink);
-    font-family:'Inter', sans-serif;
-    font-size:16px;
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-  }
-  h1,h2,h3{
-    font-family:'Fraunces', serif;
-    font-weight:500;
-    color:var(--ink);
-    line-height:1.15;
-    letter-spacing:-0.01em;
-  }
-  .mono{
-    font-family:'IBM Plex Mono', monospace;
-    letter-spacing:0.02em;
-  }
-  .wrap{max-width:var(--max); margin:0 auto; padding:0 32px;}
-  a{color:inherit;}
-  img{max-width:100%; display:block;}
-
-  /* focus visibility */
-  a:focus-visible, button:focus-visible{outline:2px solid var(--jade); outline-offset:3px;}
-  @media (prefers-reduced-motion: reduce){
-    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
-  }
-
-  /* ---------- NAV ---------- */
-  .nav{
-    position:sticky; top:0; z-index:50;
-    background:rgba(250,246,239,0.92);
-    backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--line);
-  }
-  .nav .wrap{display:flex; align-items:center; justify-content:space-between; height:72px;}
-  .nav-mark{font-family:'Fraunces', serif; font-size:20px; font-weight:600;}
-  .nav-mark span{color:var(--glaze);}
-  .nav-cta{
-    background:var(--jade-deep); color:var(--white);
-    padding:11px 22px; border-radius:var(--radius);
-    text-decoration:none; font-size:14px; font-weight:600;
-    transition:background 0.2s ease;
-  }
-  .nav-cta:hover{background:var(--jade);}
-
-  /* ---------- HERO ---------- */
-  .hero{
-    position:relative;
-    padding:96px 0 88px;
-    overflow:hidden;
-    border-bottom:1px solid var(--line);
-  }
-  .hero-grid{
-    position:absolute; inset:0;
-    display:flex; justify-content:flex-end; align-items:center;
-    pointer-events:none;
-  }
-  .hero-grid svg{opacity:0.14; width:640px; height:640px; margin-right:-120px;}
-  .hero-inner{position:relative; max-width:640px;}
-  .eyebrow{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12.5px; text-transform:uppercase; letter-spacing:0.14em;
-    color:var(--jade-deep);
-    display:flex; align-items:center; gap:10px;
-    margin-bottom:22px;
-  }
-  .eyebrow::before{content:''; width:28px; height:1px; background:var(--glaze);}
-  .hero h1{font-size:clamp(34px, 5vw, 52px); margin-bottom:22px;}
-  .hero h1 em{font-style:normal; color:var(--jade-deep); border-bottom:2px solid var(--glaze-soft);}
-  .hero p.sub{font-size:18px; color:var(--ink-soft); max-width:520px; margin-bottom:34px;}
-  .btn-primary{
-    display:inline-flex; align-items:center; gap:10px;
-    background:var(--glaze); color:var(--white);
-    padding:16px 28px; border-radius:var(--radius);
-    text-decoration:none; font-weight:600; font-size:15.5px;
-    transition:transform 0.15s ease, background 0.2s ease;
-  }
-  .btn-primary:hover{background:#9E6C3C; transform:translateY(-1px);}
-  .hero-note{margin-top:16px; font-size:13.5px; color:var(--ink-soft);}
-
-  /* ---------- TRUST STRIP ---------- */
-  .trust{padding:56px 0; border-bottom:1px solid var(--line);}
-  .trust-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:40px;}
-  .trust-item .num{
-    font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--glaze);
-    margin-bottom:10px; display:block;
-  }
-  .trust-item h3{font-size:19px; margin-bottom:8px; font-weight:600;}
-  .trust-item p{font-size:14.5px; color:var(--ink-soft);}
-
-  /* ---------- SECTION shared ---------- */
-  section{padding:88px 0;}
-  .section-head{max-width:600px; margin-bottom:52px;}
-  .section-head .eyebrow{margin-bottom:16px;}
-  .section-head h2{font-size:clamp(26px,3.4vw,36px);}
-  .section-head p{color:var(--ink-soft); margin-top:14px; font-size:16px;}
-  .divider{border-bottom:1px solid var(--line);}
-
-  /* ---------- DOCTOR ---------- */
-  .doctor{background:var(--jade-deep); color:var(--porcelain);}
-  .doctor .eyebrow{color:var(--glaze-soft);}
-  .doctor .eyebrow::before{background:var(--glaze-soft);}
-  .doctor-grid{display:grid; grid-template-columns:280px 1fr; gap:56px; align-items:start;}
-  .doctor-photo{
-    aspect-ratio:3/4; background:var(--jade);
-    border:1px solid rgba(250,246,239,0.25);
-    display:block; width:100%; height:auto; object-fit:cover;
-    object-position:center top;
-  }
-  .doctor h2{color:var(--white); font-size:clamp(24px,3vw,30px); margin-bottom:4px;}
-  .doctor .title{font-size:14.5px; color:var(--glaze-soft); margin-bottom:24px;}
-  .cred-list{list-style:none; margin-bottom:24px;}
-  .cred-list li{
-    padding:12px 0; border-top:1px solid rgba(250,246,239,0.15);
-    font-size:15px; display:flex; gap:12px;
-  }
-  .cred-list li:last-child{border-bottom:1px solid rgba(250,246,239,0.15);}
-  .cred-list li .tag{
-    font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--glaze-soft);
-    white-space:nowrap; padding-top:2px;
-  }
-  .doctor p.bio{color:rgba(250,246,239,0.82); font-size:15.5px; max-width:560px;}
-
-  /* ---------- MATERIAL TIERS ---------- */
-  .tiers-grid{display:grid; grid-template-columns:1fr 1fr; gap:28px;}
-  .tier-card{
-    background:var(--white); border:1px solid var(--line); border-radius:var(--radius);
-    padding:36px;
-  }
-  .tier-card.signature{background:var(--ink); color:var(--porcelain); border-color:var(--ink);}
-  .tier-card .tier-eyebrow{
-    font-family:'IBM Plex Mono', monospace; font-size:12px; text-transform:uppercase;
-    letter-spacing:0.1em; color:var(--jade); margin-bottom:10px;
-  }
-  .tier-card.signature .tier-eyebrow{color:var(--glaze-soft);}
-  .tier-card h3{font-size:23px; margin-bottom:10px;}
-  .tier-card .tier-desc{font-size:14.5px; color:var(--ink-soft); margin-bottom:24px;}
-  .tier-card.signature .tier-desc{color:rgba(250,246,239,0.72);}
-  .mat-list{list-style:none; margin-bottom:24px;}
-  .mat-list li{
-    display:flex; justify-content:space-between; gap:12px;
-    padding:9px 0; border-top:1px solid var(--line); font-size:14px;
-  }
-  .tier-card.signature .mat-list li{border-top:1px solid rgba(250,246,239,0.18);}
-  .mat-list li span:last-child{color:var(--ink-soft); font-family:'IBM Plex Mono', monospace; font-size:12.5px;}
-  .tier-card.signature .mat-list li span:last-child{color:rgba(250,246,239,0.65);}
-  .tier-price{
-    border-top:1px solid var(--line); padding-top:20px; margin-top:4px;
-  }
-  .tier-card.signature .tier-price{border-top:1px solid rgba(250,246,239,0.18);}
-  .tier-price .amount{font-family:'Fraunces', serif; font-size:30px; font-weight:500;}
-  .tier-price .per{font-size:13px; color:var(--ink-soft); margin-top:4px;}
-  .tier-card.signature .tier-price .per{color:rgba(250,246,239,0.65);}
-  .tier-price .compare{
-    font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--glaze);
-    margin-top:10px;
-  }
-  .tier-card.signature .tier-price .compare{color:var(--glaze-soft);}
-
-  /* ---------- TIMELINE ---------- */
-  .timeline{list-style:none; border-top:1px solid var(--line);}
-  .timeline li{
-    display:grid; grid-template-columns:120px 1fr; gap:32px;
-    padding:26px 0; border-bottom:1px solid var(--line);
-  }
-  .timeline .day{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--glaze); padding-top:2px;}
-  .timeline h4{font-size:17px; margin-bottom:6px; font-weight:600;}
-  .timeline p{font-size:14.5px; color:var(--ink-soft);}
-
-  /* ---------- COMPARISON TABLE ---------- */
-  table{width:100%; border-collapse:collapse; font-size:14.5px;}
-  th,td{text-align:left; padding:16px 14px; border-bottom:1px solid var(--line);}
-  th{font-family:'IBM Plex Mono', monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.06em; color:var(--ink-soft); font-weight:500;}
-  td:not(:first-child), th:not(:first-child){text-align:center;}
-  tr td:first-child{color:var(--ink-soft); font-size:13.5px;}
-  .highlight-col{background:var(--porcelain-dim); font-weight:600;}
-
-  /* ---------- FAQ ---------- */
-  .faq-item{border-top:1px solid var(--line); padding:26px 0;}
-  .faq-item:last-child{border-bottom:1px solid var(--line);}
-  .faq-item h4{font-size:17px; margin-bottom:10px; font-weight:600;}
-  .faq-item p{font-size:15px; color:var(--ink-soft); max-width:680px;}
-
-  /* ---------- ITINERARY ---------- */
-  .itin{background:var(--porcelain-dim);}
-  .itin-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:24px;}
-  .itin-card{background:var(--white); border:1px solid var(--line); padding:24px; border-radius:var(--radius);}
-  .itin-card .glyph{
-    width:34px; height:34px; border:1px solid var(--jade); border-radius:50%;
-    margin-bottom:16px; display:flex; align-items:center; justify-content:center;
-    font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--jade);
-  }
-  .itin-card h4{font-size:15.5px; margin-bottom:8px; font-weight:600;}
-  .itin-card p{font-size:13.5px; color:var(--ink-soft);}
-
-  /* ---------- FINAL CTA ---------- */
-  .final-cta{
-    background:var(--jade-deep); color:var(--white); text-align:center;
-    padding:96px 0;
-  }
-  .final-cta h2{color:var(--white); font-size:clamp(28px,4vw,40px); margin-bottom:18px;}
-  .final-cta p{color:rgba(250,246,239,0.78); max-width:480px; margin:0 auto 34px; font-size:16px;}
-
-  footer{padding:40px 0; font-size:13px; color:var(--ink-soft); text-align:center;}
-
-  @media (max-width:860px){
-    .doctor-grid{grid-template-columns:1fr;}
-    .doctor-photo{max-width:220px;}
-    .tiers-grid{grid-template-columns:1fr;}
-    .trust-grid{grid-template-columns:1fr; gap:28px;}
-    .itin-grid{grid-template-columns:1fr 1fr;}
-    table{font-size:13px;}
-    th,td{padding:12px 8px;}
-    .hero-grid svg{width:420px; height:420px;}
-  }
-  @media (max-width:520px){
-    .itin-grid{grid-template-columns:1fr;}
-    .timeline li{grid-template-columns:1fr; gap:6px;}
-  }
-</style>
-</head>
-<body>
-
-<nav class="nav">
-  <div class="wrap">
-    <div class="nav-mark">HeaYee<span>Veneers</span></div>
-    <a class="nav-cta" href="#contact">Chat on WhatsApp</a>
-  </div>
-</nav>
-
-<header class="hero">
-  <div class="hero-grid" aria-hidden="true">
-    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-      <!-- golden ratio smile-design grid, echoing DSD methodology -->
-      <rect x="0" y="0" width="400" height="400" fill="none" stroke="#23433B" stroke-width="1"/>
-      <line x1="247.2" y1="0" x2="247.2" y2="400" stroke="#23433B" stroke-width="1"/>
-      <line x1="0" y1="152.8" x2="400" y2="152.8" stroke="#23433B" stroke-width="1"/>
-      <rect x="152.8" y="0" width="94.4" height="152.8" fill="none" stroke="#23433B" stroke-width="1"/>
-      <line x1="205.2" y1="0" x2="205.2" y2="152.8" stroke="#23433B" stroke-width="1"/>
-      <line x1="152.8" y1="94.4" x2="247.2" y2="94.4" stroke="#23433B" stroke-width="1"/>
-      <circle cx="200" cy="200" r="180" fill="none" stroke="#23433B" stroke-width="1"/>
-      <circle cx="200" cy="200" r="111.2" fill="none" stroke="#23433B" stroke-width="1"/>
-      <circle cx="200" cy="200" r="68.7" fill="none" stroke="#23433B" stroke-width="1"/>
-    </svg>
-  </div>
-  <div class="wrap hero-inner">
-    <div class="eyebrow">Shanghai · Cosmetic &amp; Restorative Dentistry</div>
-    <h1>A smile built on the <em>same golden ratio</em> your dentist at home would design to.</h1>
-    <p class="sub">Internationally certified porcelain, a DSD-certified smile designer, and a treatment plan built around a single 5–7 day trip — at a fraction of UK and US pricing.</p>
-    <a class="btn-primary" href="#contact">Chat on WhatsApp →</a>
-    <p class="hero-note">Free consultation · Reply within 1 business day</p>
-  </div>
-</header>
-
-<section class="trust">
-  <div class="wrap trust-grid">
-    <div class="trust-item">
-      <span class="num mono">01</span>
-      <h3>Verified international materials</h3>
-      <p>VITA, Dentsply Sirona, Ivoclar Vivadent, Wieland — every case is QR-traceable to the manufacturer.</p>
-    </div>
-    <div class="trust-item">
-      <span class="num mono">02</span>
-      <h3>Internationally certified doctor</h3>
-      <p>DSD-Certified Smile Designer, ITI-Certified Implantologist, 10+ years at a top-tier Shanghai hospital.</p>
-    </div>
-    <div class="trust-item">
-      <span class="num mono">03</span>
-      <h3>Warranty in writing</h3>
-      <p>5 to 10 years depending on material tier, honored at our Shanghai clinic.</p>
-    </div>
-  </div>
-</section>
-
-<section class="doctor">
-  <div class="wrap doctor-grid">
-    <img class="doctor-photo" src="assets/dr-liu-meibo-portrait.png" alt="Dr. Liu Meibo, cosmetic and restorative dentist" width="1086" height="1448" loading="lazy" decoding="async">
-    <div>
-      <div class="eyebrow">Your Doctor</div>
-      <h2>Dr. Liu Meibo</h2>
-      <div class="title">Chief Physician, Cosmetic &amp; Restorative Dentistry</div>
-      <ul class="cred-list">
-        <li><span class="tag">EDU</span><span>Graduate, School of Stomatology, Bethune Health Science Center, Jilin University</span></li>
-        <li><span class="tag">CERT</span><span>DSD (Digital Smile Design) Certified Smile Aesthetics Specialist</span></li>
-        <li><span class="tag">CERT</span><span>ITI (International Team for Implantology) Certified Implantologist</span></li>
-        <li><span class="tag">EXP</span><span>10+ years practicing at a top-tier Shanghai hospital</span></li>
-      </ul>
-      <p class="bio">Dr. Liu specializes in smile alignment and anterior aesthetic restoration, using modern smile-design theory to balance facial harmony, bite function and tooth alignment — not just whiter teeth, but a smile built to fit your face.</p>
-    </div>
-  </div>
-</section>
-
-<section id="pricing">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Choose Your Tier</div>
-      <h2>Two material tiers, two different reasons to choose them</h2>
-      <p>The Imported Line is built for value. The Signature Line is built for a fully bespoke result. Both are backed by the same doctor and the same warranty guarantee.</p>
-    </div>
-    <div class="tiers-grid">
-      <div class="tier-card">
-        <div class="tier-eyebrow">Imported Line</div>
-        <h3>Certified, verifiable, built for value</h3>
-        <p class="tier-desc">Internationally recognized ceramics at a fraction of UK/US pricing. QR-code verifiable against manufacturer records.</p>
-        <ul class="mat-list">
-          <li><span>Ivoclar Vivadent porcelain</span><span>Switzerland</span></li>
-          <li><span>Wieland milled veneer</span><span>Germany</span></li>
-          <li><span>VITA porcelain veneer</span><span>Germany</span></li>
-          <li><span>Dentsply Sirona veneer</span><span>USA</span></li>
-        </ul>
-        <div class="tier-price">
-          <div class="amount">¥25,800 – 43,800</div>
-          <div class="per">Full arch (16 teeth) · 5-year warranty</div>
-          <div class="compare">≈ 60–80% below UK private pricing</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0B1F3A" />
+    <meta
+      name="description"
+      content="Get premium porcelain veneers in China with experienced cosmetic dentists. Digital Smile Design and personalized smile transformation for international patients."
+    />
+    <title>Premium Porcelain Veneers in China | Cosmetic Smile Design</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --navy: #0b1f3a;
+        --navy-2: #102b4f;
+        --gold: #c8a96a;
+        --gold-light: #e4d3ae;
+        --white: #fff;
+        --off: #f6f8fb;
+        --ink: #142238;
+        --muted: #647084;
+        --line: #dfe5ec;
+        --shadow: 0 24px 64px rgba(11, 31, 58, 0.12);
+        --radius: 18px;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "DM Sans", sans-serif;
+        color: var(--ink);
+        background: var(--white);
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      button {
+        font: inherit;
+      }
+      .wrap {
+        width: min(1160px, calc(100% - 40px));
+        margin: auto;
+      }
+      .section {
+        padding: 104px 0;
+      }
+      .eyebrow {
+        color: var(--gold);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+      }
+      .section-title {
+        font-family: "Playfair Display", serif;
+        color: var(--navy);
+        font-size: clamp(34px, 5vw, 52px);
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+      }
+      .section-copy {
+        color: var(--muted);
+        font-size: 17px;
+        max-width: 620px;
+        margin-top: 18px;
+      }
+      .section-head {
+        text-align: center;
+        max-width: 760px;
+        margin: 0 auto 56px;
+      }
+      .section-head .section-copy {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        min-height: 54px;
+        padding: 0 26px;
+        border: 1px solid transparent;
+        border-radius: 999px;
+        font-weight: 700;
+        transition: 0.25s ease;
+        cursor: pointer;
+      }
+      .btn-gold {
+        background: var(--gold);
+        color: var(--navy);
+      }
+      .btn-gold:hover {
+        background: #d8bb7c;
+        transform: translateY(-2px);
+      }
+      .btn-outline {
+        border-color: rgba(255, 255, 255, 0.38);
+        color: #fff;
+      }
+      .btn-outline:hover {
+        background: #fff;
+        color: var(--navy);
+      }
+      .btn svg {
+        width: 18px;
+        height: 18px;
+      }
+      .nav {
+        position: absolute;
+        z-index: 20;
+        top: 0;
+        left: 0;
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+      }
+      .nav-inner {
+        height: 82px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .brand {
+        font-family: "Playfair Display", serif;
+        font-size: 25px;
+        font-weight: 600;
+        color: #fff;
+        letter-spacing: 0.04em;
+      }
+      .brand span {
+        color: var(--gold);
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 14px;
+      }
+      .nav-links > a:not(.btn):hover {
+        color: #fff;
+      }
+      .menu-btn {
+        display: none;
+        background: none;
+        border: 0;
+        color: #fff;
+        font-size: 25px;
+      }
+      .hero {
+        min-height: 100svh;
+        position: relative;
+        display: flex;
+        align-items: center;
+        color: #fff;
+        background:
+          linear-gradient(
+            90deg,
+            rgba(5, 20, 39, 0.95) 0%,
+            rgba(5, 20, 39, 0.78) 48%,
+            rgba(5, 20, 39, 0.2) 100%
+          ),
+          url("/images/hero.jpg") center/cover no-repeat;
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: auto 0 0;
+        height: 160px;
+        background: linear-gradient(transparent, rgba(5, 20, 39, 0.4));
+        pointer-events: none;
+      }
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 720px;
+        padding: 150px 0 90px;
+      }
+      .hero-kicker {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--gold-light);
+        font-size: 13px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        margin-bottom: 24px;
+      }
+      .hero-kicker::before {
+        content: "";
+        width: 42px;
+        height: 1px;
+        background: var(--gold);
+      }
+      h1 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(52px, 7.2vw, 86px);
+        font-weight: 500;
+        line-height: 0.98;
+        letter-spacing: -0.035em;
+        max-width: 760px;
+      }
+      .hero-subtitle {
+        font-size: clamp(18px, 2.2vw, 23px);
+        color: rgba(255, 255, 255, 0.82);
+        max-width: 620px;
+        margin: 28px 0 34px;
+      }
+      .trust-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px 24px;
+        margin-top: 42px;
+        color: rgba(255, 255, 255, 0.86);
+        font-size: 14px;
+      }
+      .trust-chips span::before {
+        content: "\2713";
+        color: var(--gold);
+        font-weight: 700;
+        margin-right: 8px;
+      }
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+      .card {
+        padding: 38px;
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        transition: 0.3s;
+      }
+      .card:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--shadow);
+        border-color: transparent;
+      }
+      .icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: #f5efe2;
+        color: var(--gold);
+        font-family: "Playfair Display", serif;
+        font-size: 21px;
+        margin-bottom: 26px;
+      }
+      .card h3 {
+        color: var(--navy);
+        font-family: "Playfair Display", serif;
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+      .card p {
+        color: var(--muted);
+      }
+      .doctor {
+        background: var(--navy);
+        color: #fff;
+      }
+      .doctor-grid {
+        display: grid;
+        grid-template-columns: minmax(300px, 460px) 1fr;
+        gap: 80px;
+        align-items: center;
+      }
+      .doctor-photo {
+        aspect-ratio: 4/5;
+        border-radius: var(--radius);
+        background:
+          linear-gradient(
+            145deg,
+            rgba(200, 169, 106, 0.12),
+            rgba(11, 31, 58, 0.12)
+          ),
+          url("/images/doctor.jpg") center top/cover no-repeat;
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+      }
+      .doctor .section-title {
+        color: #fff;
+      }
+      .doctor-role {
+        color: var(--gold-light);
+        font-size: 18px;
+        margin-top: 12px;
+      }
+      .credentials {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px 24px;
+        margin: 32px 0 38px;
+        list-style: none;
+      }
+      .credentials li {
+        position: relative;
+        padding-left: 27px;
+        color: rgba(255, 255, 255, 0.82);
+      }
+      .credentials li::before {
+        content: "\2713";
+        position: absolute;
+        left: 0;
+        color: var(--gold);
+        font-weight: 700;
+      }
+      .packages {
+        background: var(--off);
+      }
+      .package-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        align-items: stretch;
+      }
+      .package {
+        position: relative;
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 38px;
+        display: flex;
+        flex-direction: column;
+      }
+      .package.featured {
+        border: 2px solid var(--gold);
+        box-shadow: var(--shadow);
+        transform: translateY(-10px);
+      }
+      .badge {
+        position: absolute;
+        top: 0;
+        right: 28px;
+        transform: translateY(-50%);
+        background: var(--gold);
+        color: var(--navy);
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 8px 14px;
+        border-radius: 999px;
+      }
+      .package h3 {
+        font-family: "Playfair Display", serif;
+        color: var(--navy);
+        font-size: 28px;
+      }
+      .package-sub {
+        color: var(--muted);
+        min-height: 54px;
+        margin: 8px 0 28px;
+      }
+      .from {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: var(--muted);
+      }
+      .price {
+        font-family: "Playfair Display", serif;
+        color: var(--navy);
+        font-size: 44px;
+        line-height: 1.2;
+        margin: 4px 0 24px;
+      }
+      .package ul {
+        list-style: none;
+        border-top: 1px solid var(--line);
+        padding-top: 22px;
+        margin-bottom: 30px;
+      }
+      .package li {
+        color: var(--muted);
+        padding: 6px 0;
+      }
+      .package li::before {
+        content: "\2713";
+        color: var(--gold);
+        margin-right: 9px;
+      }
+      .package .btn {
+        margin-top: auto;
+        border-color: var(--navy);
+        color: var(--navy);
+      }
+      .package .btn:hover,
+      .package.featured .btn {
+        background: var(--navy);
+        color: #fff;
+      }
+      .why-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 70px;
+        align-items: center;
+      }
+      .why-visual {
+        aspect-ratio: 4/3;
+        border-radius: var(--radius);
+        background:
+          linear-gradient(
+            145deg,
+            rgba(11, 31, 58, 0.12),
+            rgba(11, 31, 58, 0.55)
+          ),
+          url("/images/clinic.jpg") center/cover no-repeat;
+        box-shadow: var(--shadow);
+      }
+      .benefits {
+        display: grid;
+        gap: 28px;
+        margin-top: 36px;
+      }
+      .benefit {
+        display: grid;
+        grid-template-columns: 48px 1fr;
+        gap: 18px;
+      }
+      .benefit-num {
+        color: var(--gold);
+        font-family: "Playfair Display", serif;
+        font-size: 26px;
+      }
+      .benefit h3 {
+        color: var(--navy);
+        font-size: 19px;
+        margin-bottom: 5px;
+      }
+      .benefit p {
+        color: var(--muted);
+      }
+      .process {
+        background: var(--navy);
+        color: #fff;
+      }
+      .process .section-title {
+        color: #fff;
+      }
+      .process .section-copy {
+        color: rgba(255, 255, 255, 0.65);
+      }
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0;
+        margin-top: 60px;
+      }
+      .step {
+        position: relative;
+        padding: 0 28px;
+        border-left: 1px solid rgba(255, 255, 255, 0.18);
+      }
+      .step:first-child {
+        padding-left: 0;
+        border-left: 0;
+      }
+      .step-number {
+        font-family: "Playfair Display", serif;
+        color: var(--gold);
+        font-size: 42px;
+      }
+      .step h3 {
+        font-size: 19px;
+        margin: 14px 0 8px;
+      }
+      .step p {
+        color: rgba(255, 255, 255, 0.62);
+        font-size: 15px;
+      }
+      .gallery {
+        background: var(--off);
+      }
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+      .case {
+        background: #fff;
+        border-radius: var(--radius);
+        overflow: hidden;
+        border: 1px solid var(--line);
+      }
+      .case-photos {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        aspect-ratio: 4/3;
+      }
+      .case-photo {
+        position: relative;
+        background-position: center;
+        background-size: cover;
+      }
+      .case-photo.before {
+        background-image:
+          linear-gradient(rgba(11, 31, 58, 0.12), rgba(11, 31, 58, 0.12)),
+          url("/images/before-1.jpg");
+        filter: saturate(0.75);
+      }
+      .case-photo.after {
+        background-image: url("/images/after-1.jpg");
+      }
+      .case:nth-child(2) .before {
+        background-image:
+          linear-gradient(rgba(11, 31, 58, 0.12), rgba(11, 31, 58, 0.12)),
+          url("/images/before-2.jpg");
+      }
+      .case:nth-child(2) .after {
+        background-image: url("/images/after-2.jpg");
+      }
+      .case:nth-child(3) .before {
+        background-image:
+          linear-gradient(rgba(11, 31, 58, 0.12), rgba(11, 31, 58, 0.12)),
+          url("/images/before-3.jpg");
+      }
+      .case:nth-child(3) .after {
+        background-image: url("/images/after-3.jpg");
+      }
+      .case-label {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        background: rgba(11, 31, 58, 0.86);
+        color: #fff;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        padding: 5px 9px;
+        border-radius: 999px;
+      }
+      .case-caption {
+        padding: 20px 22px;
+        color: var(--navy);
+        font-weight: 600;
+      }
+      .final-cta {
+        padding: 108px 0;
+        text-align: center;
+        color: #fff;
+        background:
+          linear-gradient(
+            110deg,
+            rgba(11, 31, 58, 0.96),
+            rgba(16, 43, 79, 0.9)
+          ),
+          url("/images/cta.jpg") center/cover no-repeat;
+      }
+      .final-cta h2 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(40px, 6vw, 64px);
+        line-height: 1.05;
+      }
+      .final-cta p {
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 18px;
+        margin: 20px auto 34px;
+        max-width: 620px;
+      }
+      .footer {
+        background: #071629;
+        color: rgba(255, 255, 255, 0.62);
+        padding: 58px 0 28px;
+      }
+      .footer-main {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 30px;
+        padding-bottom: 42px;
+      }
+      .footer .brand {
+        display: block;
+        margin-bottom: 8px;
+      }
+      .footer-links {
+        display: flex;
+        gap: 26px;
+        font-size: 14px;
+      }
+      .footer-links a:hover {
+        color: #fff;
+      }
+      .copyright {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 24px;
+        font-size: 12px;
+        text-align: center;
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.65s ease,
+          transform 0.65s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: none;
+      }
+      @media (max-width: 900px) {
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 82px;
+          left: 20px;
+          right: 20px;
+          padding: 24px;
+          background: var(--navy);
+          border: 1px solid rgba(255, 255, 255, 0.14);
+          border-radius: 14px;
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .nav-links.open {
+          display: flex;
+        }
+        .menu-btn {
+          display: block;
+        }
+        .doctor-grid,
+        .why-grid {
+          grid-template-columns: 1fr;
+          gap: 48px;
+        }
+        .doctor-photo {
+          max-width: 480px;
+        }
+        .cards,
+        .package-grid,
+        .gallery-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .package.featured {
+          transform: none;
+        }
+        .steps {
+          grid-template-columns: 1fr 1fr;
+          gap: 40px;
+        }
+        .step:nth-child(3) {
+          border-left: 0;
+          padding-left: 0;
+        }
+      }
+      @media (max-width: 620px) {
+        .wrap {
+          width: min(100% - 28px, 1160px);
+        }
+        .section {
+          padding: 76px 0;
+        }
+        .hero {
+          background-position: 62% center;
+        }
+        .hero-content {
+          padding-top: 132px;
+        }
+        .hero-subtitle {
+          font-size: 17px;
+        }
+        .trust-chips {
+          display: grid;
+        }
+        .cards,
+        .package-grid,
+        .gallery-grid,
+        .credentials,
+        .steps {
+          grid-template-columns: 1fr;
+        }
+        .step {
+          border-left: 0;
+          border-top: 1px solid rgba(255, 255, 255, 0.15);
+          padding: 24px 0 0;
+        }
+        .step:first-child {
+          border-top: 0;
+          padding-top: 0;
+        }
+        .footer-main,
+        .footer-links {
+          flex-direction: column;
+        }
+        .doctor-grid {
+          gap: 38px;
+        }
+        .package {
+          padding: 30px;
+        }
+        .section-head {
+          text-align: left;
+        }
+        .section-head .section-copy {
+          margin-left: 0;
+        }
+        .case-photos {
+          aspect-ratio: 4/3;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        .reveal {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+        .btn,
+        .card {
+          transition: none;
+        }
+      }
+      .case-photo {
+        background-color: #dfe5ec;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="nav">
+      <div class="wrap nav-inner">
+        <a class="brand" href="#top">HEAYEE <span>Smile</span></a>
+        <nav class="nav-links" id="navLinks">
+          <a href="#benefits">Why Us</a><a href="#doctor">Doctor</a
+          ><a href="#packages">Packages</a><a href="#gallery">Results</a
+          ><a
+            class="btn btn-gold"
+            href="https://wa.me/16462469572"
+            target="_blank"
+            rel="noopener"
+            >Free Assessment</a
+          >
+        </nav>
+        <button
+          class="menu-btn"
+          id="menuBtn"
+          aria-label="Open navigation"
+          aria-expanded="false"
+        >
+          &#9776;
+        </button>
+      </div>
+    </header>
+    <main id="top">
+      <section class="hero">
+        <div class="wrap">
+          <div class="hero-content reveal">
+            <div class="hero-kicker">International Cosmetic Dentistry</div>
+            <h1>Your Dream Smile,<br />Designed in China</h1>
+            <p class="hero-subtitle">
+              Premium Porcelain Veneers by Experienced Cosmetic Dentists
+            </p>
+            <a
+              class="btn btn-gold"
+              href="https://wa.me/16462469572"
+              target="_blank"
+              rel="noopener"
+              >Get Free Smile Assessment <span>&rarr;</span></a
+            >
+            <div class="trust-chips">
+              <span>Digital Smile Design</span
+              ><span>Premium Porcelain Materials</span
+              ><span>Experienced Cosmetic Dentist</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section" id="benefits">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <div class="eyebrow">Premium Care</div>
+            <h2 class="section-title">Why Choose Our Veneers?</h2>
+            <p class="section-copy">
+              International-grade materials, personalized planning and an
+              experienced clinical team&mdash;combined in one seamless smile
+              journey.
+            </p>
+          </div>
+          <div class="cards">
+            <article class="card reveal">
+              <div class="icon">01</div>
+              <h3>Premium Materials</h3>
+              <p>Imported porcelain veneers from Germany and USA.</p>
+            </article>
+            <article class="card reveal">
+              <div class="icon">02</div>
+              <h3>Digital Smile Design</h3>
+              <p>A personalized smile designed around your face.</p>
+            </article>
+            <article class="card reveal">
+              <div class="icon">03</div>
+              <h3>Experienced Dentist</h3>
+              <p>10+ years cosmetic dentistry experience.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="section doctor" id="doctor">
+        <div class="wrap doctor-grid">
+          <div
+            class="doctor-photo reveal"
+            role="img"
+            aria-label="Portrait of Dr. Liu Meibo"
+          ></div>
+          <div class="reveal">
+            <div class="eyebrow">Meet Your Smile Designer</div>
+            <h2 class="section-title">Dr. Liu Meibo</h2>
+            <p class="doctor-role">Cosmetic Dentistry Specialist</p>
+            <ul class="credentials">
+              <li>10+ years clinical experience</li>
+              <li>Digital Smile Design certified dentist</li>
+              <li>Cosmetic porcelain veneer specialist</li>
+              <li>Implant dentistry experience</li>
+            </ul>
+            <a
+              class="btn btn-gold"
+              href="https://wa.me/16462469572"
+              target="_blank"
+              rel="noopener"
+              >Contact Doctor <span>&rarr;</span></a
+            >
+          </div>
+        </div>
+      </section>
+      <section class="section packages" id="packages">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <div class="eyebrow">Veneer Packages</div>
+            <h2 class="section-title">Choose Your Smile Transformation</h2>
+            <p class="section-copy">
+              Three carefully designed levels of care for international
+              patients. Your final plan is confirmed after clinical assessment.
+            </p>
+          </div>
+          <div class="package-grid">
+            <article class="package reveal">
+              <h3>Natural Smile</h3>
+              <p class="package-sub">German Porcelain Veneers</p>
+              <span class="from">Starting From</span>
+              <div class="price">$6,800</div>
+              <ul>
+                <li>Natural smile improvement</li>
+                <li>Personalized veneer planning</li>
+                <li>International patient support</li>
+              </ul>
+              <a
+                class="btn"
+                href="https://wa.me/16462469572"
+                target="_blank"
+                rel="noopener"
+                >Request Assessment</a
+              >
+            </article>
+            <article class="package featured reveal">
+              <div class="badge">Most Popular</div>
+              <h3>Premium Smile</h3>
+              <p class="package-sub">
+                Advanced Porcelain Veneers + Digital Smile Design
+              </p>
+              <span class="from">Starting From</span>
+              <div class="price">$8,800</div>
+              <ul>
+                <li>Digital Smile Design included</li>
+                <li>Advanced porcelain materials</li>
+                <li>Personalized aesthetic planning</li>
+              </ul>
+              <a
+                class="btn"
+                href="https://wa.me/16462469572"
+                target="_blank"
+                rel="noopener"
+                >Request Assessment</a
+              >
+            </article>
+            <article class="package reveal">
+              <h3>Signature Smile</h3>
+              <p class="package-sub">Handcrafted Luxury Smile Design</p>
+              <span class="from">Starting From</span>
+              <div class="price">$14,800</div>
+              <ul>
+                <li>Bespoke luxury smile design</li>
+                <li>Premium handcrafted aesthetics</li>
+                <li>Priority international coordination</li>
+              </ul>
+              <a
+                class="btn"
+                href="https://wa.me/16462469572"
+                target="_blank"
+                rel="noopener"
+                >Request Assessment</a
+              >
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="wrap why-grid">
+          <div
+            class="why-visual reveal"
+            role="img"
+            aria-label="Modern cosmetic dentistry clinic"
+          ></div>
+          <div class="reveal">
+            <div class="eyebrow">World-Class Care, Exceptional Value</div>
+            <h2 class="section-title">Why Choose Dental Veneers in China?</h2>
+            <div class="benefits">
+              <div class="benefit">
+                <div class="benefit-num">01</div>
+                <div>
+                  <h3>Advanced Dental Technology</h3>
+                  <p>
+                    Modern digital planning and precision-driven treatment
+                    workflows.
+                  </p>
+                </div>
+              </div>
+              <div class="benefit">
+                <div class="benefit-num">02</div>
+                <div>
+                  <h3>Experienced Cosmetic Dentists</h3>
+                  <p>
+                    Specialist-led care focused on natural facial harmony and
+                    function.
+                  </p>
+                </div>
+              </div>
+              <div class="benefit">
+                <div class="benefit-num">03</div>
+                <div>
+                  <h3>Premium Quality With Better Value</h3>
+                  <p>
+                    International materials and elevated care without typical
+                    Western-market pricing.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section process">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <div class="eyebrow">Simple &amp; Personal</div>
+            <h2 class="section-title">Your Smile Journey</h2>
+            <p class="section-copy">
+              From your first photos to your final smile, our international care
+              team guides every step.
+            </p>
+          </div>
+          <div class="steps">
+            <article class="step reveal">
+              <div class="step-number">01</div>
+              <h3>Online Consultation</h3>
+              <p>Send your smile photos through WhatsApp.</p>
+            </article>
+            <article class="step reveal">
+              <div class="step-number">02</div>
+              <h3>Smile Assessment</h3>
+              <p>Doctor evaluates your case.</p>
+            </article>
+            <article class="step reveal">
+              <div class="step-number">03</div>
+              <h3>Smile Design</h3>
+              <p>Create your personalized veneer plan.</p>
+            </article>
+            <article class="step reveal">
+              <div class="step-number">04</div>
+              <h3>Treatment</h3>
+              <p>Complete your smile transformation.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="section gallery" id="gallery">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <div class="eyebrow">Real Results</div>
+            <h2 class="section-title">Smile Transformations</h2>
+            <p class="section-copy">
+              Every smile is designed around the individual. Replace the
+              placeholders below with authorized, unedited clinical case
+              photography.
+            </p>
+          </div>
+          <div class="gallery-grid">
+            <article class="case reveal">
+              <div class="case-photos">
+                <div class="case-photo before">
+                  <span class="case-label">Before</span>
+                </div>
+                <div class="case-photo after">
+                  <span class="case-label">After</span>
+                </div>
+              </div>
+              <div class="case-caption">Natural Smile Refinement</div>
+            </article>
+            <article class="case reveal">
+              <div class="case-photos">
+                <div class="case-photo before">
+                  <span class="case-label">Before</span>
+                </div>
+                <div class="case-photo after">
+                  <span class="case-label">After</span>
+                </div>
+              </div>
+              <div class="case-caption">Proportion &amp; Alignment</div>
+            </article>
+            <article class="case reveal">
+              <div class="case-photos">
+                <div class="case-photo before">
+                  <span class="case-label">Before</span>
+                </div>
+                <div class="case-photo after">
+                  <span class="case-label">After</span>
+                </div>
+              </div>
+              <div class="case-caption">Complete Smile Design</div>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="final-cta">
+        <div class="wrap reveal">
+          <h2>Ready For Your New Smile?</h2>
+          <p>Send your smile photos and receive a preliminary assessment.</p>
+          <a
+            class="btn btn-gold"
+            href="https://wa.me/16462469572"
+            target="_blank"
+            rel="noopener"
+            >Chat On WhatsApp <span>&rarr;</span></a
+          >
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="wrap">
+        <div class="footer-main">
+          <div>
+            <a class="brand" href="#top">HEAYEE <span>Smile</span></a>
+            <p>International Cosmetic Dentistry Service</p>
+          </div>
+          <nav class="footer-links" aria-label="Footer navigation">
+            <a href="/privacy-policy.html">Privacy Policy</a
+            ><a href="/terms.html">Terms</a
+            ><a href="https://wa.me/16462469572" target="_blank" rel="noopener"
+              >Contact</a
+            >
+          </nav>
+        </div>
+        <div class="copyright">
+          &copy; <span id="year"></span> HEAYEE Smile. Treatment suitability and
+          final pricing require professional clinical assessment.
         </div>
       </div>
-      <div class="tier-card signature">
-        <div class="tier-eyebrow">Signature Line</div>
-        <h3>Fully hand-crafted, bespoke design</h3>
-        <p class="tier-desc">Golden-ratio smile design, hand-sculpted texture and light translucency. Priced in line with standard UK porcelain — with a fully custom result.</p>
-        <ul class="mat-list">
-          <li><span>Inspire Smile Veneer</span><span>Semi-handcrafted</span></li>
-          <li><span>Fully handcrafted porcelain</span><span>Bespoke design</span></li>
-        </ul>
-        <div class="tier-price">
-          <div class="amount">¥78,000 – 88,000</div>
-          <div class="per">Full arch (16 teeth) · 10-year warranty</div>
-          <div class="compare">≈ in line with UK porcelain median (£614/tooth)</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="divider">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Your Trip</div>
-      <h2>Five to seven days, two appointments</h2>
-      <p>Timeline may extend slightly for more complex cases — confirmed at your consultation.</p>
-    </div>
-    <ul class="timeline">
-      <li>
-        <div class="day mono">DAY 1</div>
-        <div><h4>Consultation &amp; preparation</h4><p>Smile design planning and tooth preparation at our Shanghai clinic.</p></div>
-      </li>
-      <li>
-        <div class="day mono">DAY 2–5/6</div>
-        <div><h4>Your veneers are hand-crafted</h4><p>Free days in Shanghai while your case is built in-lab — coordinator-arranged.</p></div>
-      </li>
-      <li>
-        <div class="day mono">DAY 6/7</div>
-        <div><h4>Final fitting &amp; placement</h4><p>Your new smile, fitted and finished at the clinic.</p></div>
-      </li>
-    </ul>
-  </div>
-</section>
-
-<section class="itin">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">While You Wait</div>
-      <h2>Your Shanghai stay, handled</h2>
-    </div>
-    <div class="itin-grid">
-      <div class="itin-card"><div class="glyph">→</div><h4>Airport &amp; hotel</h4><p>Pickup and accommodation arranged before you land.</p></div>
-      <div class="itin-card"><div class="glyph">→</div><h4>English-speaking coordinator</h4><p>With you at every clinic visit and throughout your stay.</p></div>
-      <div class="itin-card"><div class="glyph">→</div><h4>Curated itinerary</h4><p>Optional day trips around Shanghai during your free days.</p></div>
-      <div class="itin-card"><div class="glyph">→</div><h4>On-site translation</h4><p>At every appointment, no communication gaps.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="divider">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">At A Glance</div>
-      <h2>How it compares</h2>
-    </div>
-    <table>
-      <thead>
-        <tr><th>Per tooth</th><th>UK Private Clinic</th><th class="highlight-col">Imported Line</th><th>Signature Line</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Price range</td><td>£700 – £1,500</td><td class="highlight-col">£177 – £301</td><td>£536 – £604</td></tr>
-        <tr><td>Material traceability</td><td>Varies by clinic</td><td class="highlight-col">QR-verified</td><td>QR-verified</td></tr>
-        <tr><td>Warranty</td><td>Typically 5–10 yrs</td><td class="highlight-col">5 years</td><td>10 years</td></tr>
-        <tr><td>Wait for appointment</td><td>Weeks to months</td><td class="highlight-col">Booked around your trip</td><td>Booked around your trip</td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Questions</div>
-      <h2>What people ask before booking</h2>
-    </div>
-    <div class="faq-list">
-      <div class="faq-item">
-        <h4>Is this safe? I've heard bad things about overseas dental tourism.</h4>
-        <p>A fair concern. Every material we use comes from internationally recognized manufacturers — VITA, Dentsply Sirona, Ivoclar Vivadent, Wieland — and is QR-code traceable to the source. Dr. Liu Meibo holds internationally recognized DSD and ITI certifications, and your treatment plan and warranty terms are provided in writing before you travel.</p>
-      </div>
-      <div class="faq-item">
-        <h4>What if something goes wrong after I go home?</h4>
-        <p>Your warranty is honored at our Shanghai clinic. If an issue arises within your warranty period, you'll return to Shanghai so the same certified materials and the same doctor who designed your treatment handle the repair — our coordinator will help you plan the trip if this ever comes up.</p>
-      </div>
-      <div class="faq-item">
-        <h4>Do I need to stay in Shanghai the whole time?</h4>
-        <p>No — your two appointments are several days apart, and our team arranges everything in between so you can see the city.</p>
-      </div>
-      <div class="faq-item">
-        <h4>What's included in the price?</h4>
-        <p>Your quoted price includes the initial consultation, X-rays, and temporary veneers during the waiting period. Anything outside the standard plan is discussed and quoted before any extra charge.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="final-cta" id="contact">
-  <div class="wrap">
-    <h2>Ready to see what your smile could look like?</h2>
-    <p>Send a few photos on WhatsApp — get a personalized treatment plan and quote within 1 business day.</p>
-    <a class="btn-primary" href="https://wa.me/REPLACE_WITH_NUMBER" target="_blank" rel="noopener">Chat on WhatsApp →</a>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">HeaYee Veneers · Cosmetic &amp; Restorative Dentistry · Consultation only, not a medical diagnosis</div>
-</footer>
-
-</body>
+    </footer>
+    <script>
+      const menuBtn = document.getElementById("menuBtn"),
+        navLinks = document.getElementById("navLinks");
+      menuBtn.addEventListener("click", () => {
+        const open = navLinks.classList.toggle("open");
+        menuBtn.setAttribute("aria-expanded", open);
+        menuBtn.textContent = open ? "\u00d7" : "\u2630";
+      });
+      navLinks.querySelectorAll("a").forEach((link) =>
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("open");
+          menuBtn.setAttribute("aria-expanded", "false");
+          menuBtn.textContent = "\u2630";
+        }),
+      );
+      document.getElementById("year").textContent = new Date().getFullYear();
+      const observer = new IntersectionObserver(
+        (entries) =>
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          }),
+        { threshold: 0.12 },
+      );
+      document
+        .querySelectorAll(".reveal")
+        .forEach((element) => observer.observe(element));
+    </script>
+  </body>
 </html>
