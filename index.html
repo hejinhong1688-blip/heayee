@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HeaYee — Internationally Certified Smile Design</title>
+<meta name="description" content="Premium dental veneers in Shanghai using certified German and American ceramics, a DSD-certified smile designer, in a single 5–7 day trip.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --porcelain: #FAF6EF;
+    --porcelain-dim: #F1EBDD;
+    --ink: #1C2B29;
+    --ink-soft: #3C4C49;
+    --jade: #3C6E63;
+    --jade-deep: #23433B;
+    --glaze: #B9814B;
+    --glaze-soft: #E4C9A4;
+    --line: #D9D0BC;
+    --white: #FFFFF9;
+    --radius: 2px;
+    --max: 1120px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--porcelain);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    color:var(--ink);
+    line-height:1.15;
+    letter-spacing:-0.01em;
+  }
+  .mono{
+    font-family:'IBM Plex Mono', monospace;
+    letter-spacing:0.02em;
+  }
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 32px;}
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible{outline:2px solid var(--jade); outline-offset:3px;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(250,246,239,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav .wrap{display:flex; align-items:center; justify-content:space-between; height:72px;}
+  .nav-mark{font-family:'Fraunces', serif; font-size:20px; font-weight:600;}
+  .nav-mark span{color:var(--glaze);}
+  .nav-cta{
+    background:var(--jade-deep); color:var(--white);
+    padding:11px 22px; border-radius:var(--radius);
+    text-decoration:none; font-size:14px; font-weight:600;
+    transition:background 0.2s ease;
+  }
+  .nav-cta:hover{background:var(--jade);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:96px 0 88px;
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-grid{
+    position:absolute; inset:0;
+    display:flex; justify-content:flex-end; align-items:center;
+    pointer-events:none;
+  }
+  .hero-grid svg{opacity:0.14; width:640px; height:640px; margin-right:-120px;}
+  .hero-inner{position:relative; max-width:640px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px; text-transform:uppercase; letter-spacing:0.14em;
+    color:var(--jade-deep);
+    display:flex; align-items:center; gap:10px;
+    margin-bottom:22px;
+  }
+  .eyebrow::before{content:''; width:28px; height:1px; background:var(--glaze);}
+  .hero h1{font-size:clamp(34px, 5vw, 52px); margin-bottom:22px;}
+  .hero h1 em{font-style:normal; color:var(--jade-deep); border-bottom:2px solid var(--glaze-soft);}
+  .hero p.sub{font-size:18px; color:var(--ink-soft); max-width:520px; margin-bottom:34px;}
+  .btn-primary{
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--glaze); color:var(--white);
+    padding:16px 28px; border-radius:var(--radius);
+    text-decoration:none; font-weight:600; font-size:15.5px;
+    transition:transform 0.15s ease, background 0.2s ease;
+  }
+  .btn-primary:hover{background:#9E6C3C; transform:translateY(-1px);}
+  .hero-note{margin-top:16px; font-size:13.5px; color:var(--ink-soft);}
+
+  /* ---------- TRUST STRIP ---------- */
+  .trust{padding:56px 0; border-bottom:1px solid var(--line);}
+  .trust-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:40px;}
+  .trust-item .num{
+    font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--glaze);
+    margin-bottom:10px; display:block;
+  }
+  .trust-item h3{font-size:19px; margin-bottom:8px; font-weight:600;}
+  .trust-item p{font-size:14.5px; color:var(--ink-soft);}
+
+  /* ---------- SECTION shared ---------- */
+  section{padding:88px 0;}
+  .section-head{max-width:600px; margin-bottom:52px;}
+  .section-head .eyebrow{margin-bottom:16px;}
+  .section-head h2{font-size:clamp(26px,3.4vw,36px);}
+  .section-head p{color:var(--ink-soft); margin-top:14px; font-size:16px;}
+  .divider{border-bottom:1px solid var(--line);}
+
+  /* ---------- DOCTOR ---------- */
+  .doctor{background:var(--jade-deep); color:var(--porcelain);}
+  .doctor .eyebrow{color:var(--glaze-soft);}
+  .doctor .eyebrow::before{background:var(--glaze-soft);}
+  .doctor-grid{display:grid; grid-template-columns:280px 1fr; gap:56px; align-items:start;}
+  .doctor-photo{
+    aspect-ratio:3/4; background:var(--jade);
+    border:1px solid rgba(250,246,239,0.25);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono', monospace; font-size:12px; color:rgba(250,246,239,0.5);
+    text-align:center; padding:20px;
+  }
+  .doctor h2{color:var(--white); font-size:clamp(24px,3vw,30px); margin-bottom:4px;}
+  .doctor .title{font-size:14.5px; color:var(--glaze-soft); margin-bottom:24px;}
+  .cred-list{list-style:none; margin-bottom:24px;}
+  .cred-list li{
+    padding:12px 0; border-top:1px solid rgba(250,246,239,0.15);
+    font-size:15px; display:flex; gap:12px;
+  }
+  .cred-list li:last-child{border-bottom:1px solid rgba(250,246,239,0.15);}
+  .cred-list li .tag{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--glaze-soft);
+    white-space:nowrap; padding-top:2px;
+  }
+  .doctor p.bio{color:rgba(250,246,239,0.82); font-size:15.5px; max-width:560px;}
+
+  /* ---------- MATERIAL TIERS ---------- */
+  .tiers-grid{display:grid; grid-template-columns:1fr 1fr; gap:28px;}
+  .tier-card{
+    background:var(--white); border:1px solid var(--line); border-radius:var(--radius);
+    padding:36px;
+  }
+  .tier-card.signature{background:var(--ink); color:var(--porcelain); border-color:var(--ink);}
+  .tier-card .tier-eyebrow{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; text-transform:uppercase;
+    letter-spacing:0.1em; color:var(--jade); margin-bottom:10px;
+  }
+  .tier-card.signature .tier-eyebrow{color:var(--glaze-soft);}
+  .tier-card h3{font-size:23px; margin-bottom:10px;}
+  .tier-card .tier-desc{font-size:14.5px; color:var(--ink-soft); margin-bottom:24px;}
+  .tier-card.signature .tier-desc{color:rgba(250,246,239,0.72);}
+  .mat-list{list-style:none; margin-bottom:24px;}
+  .mat-list li{
+    display:flex; justify-content:space-between; gap:12px;
+    padding:9px 0; border-top:1px solid var(--line); font-size:14px;
+  }
+  .tier-card.signature .mat-list li{border-top:1px solid rgba(250,246,239,0.18);}
+  .mat-list li span:last-child{color:var(--ink-soft); font-family:'IBM Plex Mono', monospace; font-size:12.5px;}
+  .tier-card.signature .mat-list li span:last-child{color:rgba(250,246,239,0.65);}
+  .tier-price{
+    border-top:1px solid var(--line); padding-top:20px; margin-top:4px;
+  }
+  .tier-card.signature .tier-price{border-top:1px solid rgba(250,246,239,0.18);}
+  .tier-price .amount{font-family:'Fraunces', serif; font-size:30px; font-weight:500;}
+  .tier-price .per{font-size:13px; color:var(--ink-soft); margin-top:4px;}
+  .tier-card.signature .tier-price .per{color:rgba(250,246,239,0.65);}
+  .tier-price .compare{
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--glaze);
+    margin-top:10px;
+  }
+  .tier-card.signature .tier-price .compare{color:var(--glaze-soft);}
+
+  /* ---------- TIMELINE ---------- */
+  .timeline{list-style:none; border-top:1px solid var(--line);}
+  .timeline li{
+    display:grid; grid-template-columns:120px 1fr; gap:32px;
+    padding:26px 0; border-bottom:1px solid var(--line);
+  }
+  .timeline .day{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--glaze); padding-top:2px;}
+  .timeline h4{font-size:17px; margin-bottom:6px; font-weight:600;}
+  .timeline p{font-size:14.5px; color:var(--ink-soft);}
+
+  /* ---------- COMPARISON TABLE ---------- */
+  table{width:100%; border-collapse:collapse; font-size:14.5px;}
+  th,td{text-align:left; padding:16px 14px; border-bottom:1px solid var(--line);}
+  th{font-family:'IBM Plex Mono', monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.06em; color:var(--ink-soft); font-weight:500;}
+  td:not(:first-child), th:not(:first-child){text-align:center;}
+  tr td:first-child{color:var(--ink-soft); font-size:13.5px;}
+  .highlight-col{background:var(--porcelain-dim); font-weight:600;}
+
+  /* ---------- FAQ ---------- */
+  .faq-item{border-top:1px solid var(--line); padding:26px 0;}
+  .faq-item:last-child{border-bottom:1px solid var(--line);}
+  .faq-item h4{font-size:17px; margin-bottom:10px; font-weight:600;}
+  .faq-item p{font-size:15px; color:var(--ink-soft); max-width:680px;}
+
+  /* ---------- ITINERARY ---------- */
+  .itin{background:var(--porcelain-dim);}
+  .itin-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:24px;}
+  .itin-card{background:var(--white); border:1px solid var(--line); padding:24px; border-radius:var(--radius);}
+  .itin-card .glyph{
+    width:34px; height:34px; border:1px solid var(--jade); border-radius:50%;
+    margin-bottom:16px; display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--jade);
+  }
+  .itin-card h4{font-size:15.5px; margin-bottom:8px; font-weight:600;}
+  .itin-card p{font-size:13.5px; color:var(--ink-soft);}
+
+  /* ---------- FINAL CTA ---------- */
+  .final-cta{
+    background:var(--jade-deep); color:var(--white); text-align:center;
+    padding:96px 0;
+  }
+  .final-cta h2{color:var(--white); font-size:clamp(28px,4vw,40px); margin-bottom:18px;}
+  .final-cta p{color:rgba(250,246,239,0.78); max-width:480px; margin:0 auto 34px; font-size:16px;}
+
+  footer{padding:40px 0; font-size:13px; color:var(--ink-soft); text-align:center;}
+
+  @media (max-width:860px){
+    .doctor-grid{grid-template-columns:1fr;}
+    .doctor-photo{max-width:220px;}
+    .tiers-grid{grid-template-columns:1fr;}
+    .trust-grid{grid-template-columns:1fr; gap:28px;}
+    .itin-grid{grid-template-columns:1fr 1fr;}
+    table{font-size:13px;}
+    th,td{padding:12px 8px;}
+    .hero-grid svg{width:420px; height:420px;}
+  }
+  @media (max-width:520px){
+    .itin-grid{grid-template-columns:1fr;}
+    .timeline li{grid-template-columns:1fr; gap:6px;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-mark">HeaYee<span>Veneers</span></div>
+    <a class="nav-cta" href="#contact">Chat on WhatsApp</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-grid" aria-hidden="true">
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <!-- golden ratio smile-design grid, echoing DSD methodology -->
+      <rect x="0" y="0" width="400" height="400" fill="none" stroke="#23433B" stroke-width="1"/>
+      <line x1="247.2" y1="0" x2="247.2" y2="400" stroke="#23433B" stroke-width="1"/>
+      <line x1="0" y1="152.8" x2="400" y2="152.8" stroke="#23433B" stroke-width="1"/>
+      <rect x="152.8" y="0" width="94.4" height="152.8" fill="none" stroke="#23433B" stroke-width="1"/>
+      <line x1="205.2" y1="0" x2="205.2" y2="152.8" stroke="#23433B" stroke-width="1"/>
+      <line x1="152.8" y1="94.4" x2="247.2" y2="94.4" stroke="#23433B" stroke-width="1"/>
+      <circle cx="200" cy="200" r="180" fill="none" stroke="#23433B" stroke-width="1"/>
+      <circle cx="200" cy="200" r="111.2" fill="none" stroke="#23433B" stroke-width="1"/>
+      <circle cx="200" cy="200" r="68.7" fill="none" stroke="#23433B" stroke-width="1"/>
+    </svg>
+  </div>
+  <div class="wrap hero-inner">
+    <div class="eyebrow">Shanghai · Cosmetic &amp; Restorative Dentistry</div>
+    <h1>A smile built on the <em>same golden ratio</em> your dentist at home would design to.</h1>
+    <p class="sub">Internationally certified porcelain, a DSD-certified smile designer, and a treatment plan built around a single 5–7 day trip — at a fraction of UK and US pricing.</p>
+    <a class="btn-primary" href="#contact">Chat on WhatsApp →</a>
+    <p class="hero-note">Free consultation · Reply within 1 business day</p>
+  </div>
+</header>
+
+<section class="trust">
+  <div class="wrap trust-grid">
+    <div class="trust-item">
+      <span class="num mono">01</span>
+      <h3>Verified international materials</h3>
+      <p>VITA, Dentsply Sirona, Ivoclar Vivadent, Wieland — every case is QR-traceable to the manufacturer.</p>
+    </div>
+    <div class="trust-item">
+      <span class="num mono">02</span>
+      <h3>Internationally certified doctor</h3>
+      <p>DSD-Certified Smile Designer, ITI-Certified Implantologist, 10+ years at a top-tier Shanghai hospital.</p>
+    </div>
+    <div class="trust-item">
+      <span class="num mono">03</span>
+      <h3>Warranty in writing</h3>
+      <p>5 to 10 years depending on material tier, honored at our Shanghai clinic.</p>
+    </div>
+  </div>
+</section>
+
+<section class="doctor">
+  <div class="wrap doctor-grid">
+    <div class="doctor-photo">Doctor portrait<br>placeholder — replace with<br>authorized clinic photo</div>
+    <div>
+      <div class="eyebrow">Your Doctor</div>
+      <h2>Dr. Liu Meibo</h2>
+      <div class="title">Chief Physician, Cosmetic &amp; Restorative Dentistry</div>
+      <ul class="cred-list">
+        <li><span class="tag">EDU</span><span>Graduate, School of Stomatology, Bethune Health Science Center, Jilin University</span></li>
+        <li><span class="tag">CERT</span><span>DSD (Digital Smile Design) Certified Smile Aesthetics Specialist</span></li>
+        <li><span class="tag">CERT</span><span>ITI (International Team for Implantology) Certified Implantologist</span></li>
+        <li><span class="tag">EXP</span><span>10+ years practicing at a top-tier Shanghai hospital</span></li>
+      </ul>
+      <p class="bio">Dr. Liu specializes in smile alignment and anterior aesthetic restoration, using modern smile-design theory to balance facial harmony, bite function and tooth alignment — not just whiter teeth, but a smile built to fit your face.</p>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Choose Your Tier</div>
+      <h2>Two material tiers, two different reasons to choose them</h2>
+      <p>The Imported Line is built for value. The Signature Line is built for a fully bespoke result. Both are backed by the same doctor and the same warranty guarantee.</p>
+    </div>
+    <div class="tiers-grid">
+      <div class="tier-card">
+        <div class="tier-eyebrow">Imported Line</div>
+        <h3>Certified, verifiable, built for value</h3>
+        <p class="tier-desc">Internationally recognized ceramics at a fraction of UK/US pricing. QR-code verifiable against manufacturer records.</p>
+        <ul class="mat-list">
+          <li><span>Ivoclar Vivadent porcelain</span><span>Switzerland</span></li>
+          <li><span>Wieland milled veneer</span><span>Germany</span></li>
+          <li><span>VITA porcelain veneer</span><span>Germany</span></li>
+          <li><span>Dentsply Sirona veneer</span><span>USA</span></li>
+        </ul>
+        <div class="tier-price">
+          <div class="amount">¥25,800 – 43,800</div>
+          <div class="per">Full arch (16 teeth) · 5-year warranty</div>
+          <div class="compare">≈ 60–80% below UK private pricing</div>
+        </div>
+      </div>
+      <div class="tier-card signature">
+        <div class="tier-eyebrow">Signature Line</div>
+        <h3>Fully hand-crafted, bespoke design</h3>
+        <p class="tier-desc">Golden-ratio smile design, hand-sculpted texture and light translucency. Priced in line with standard UK porcelain — with a fully custom result.</p>
+        <ul class="mat-list">
+          <li><span>Inspire Smile Veneer</span><span>Semi-handcrafted</span></li>
+          <li><span>Fully handcrafted porcelain</span><span>Bespoke design</span></li>
+        </ul>
+        <div class="tier-price">
+          <div class="amount">¥78,000 – 88,000</div>
+          <div class="per">Full arch (16 teeth) · 10-year warranty</div>
+          <div class="compare">≈ in line with UK porcelain median (£614/tooth)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="divider">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Your Trip</div>
+      <h2>Five to seven days, two appointments</h2>
+      <p>Timeline may extend slightly for more complex cases — confirmed at your consultation.</p>
+    </div>
+    <ul class="timeline">
+      <li>
+        <div class="day mono">DAY 1</div>
+        <div><h4>Consultation &amp; preparation</h4><p>Smile design planning and tooth preparation at our Shanghai clinic.</p></div>
+      </li>
+      <li>
+        <div class="day mono">DAY 2–5/6</div>
+        <div><h4>Your veneers are hand-crafted</h4><p>Free days in Shanghai while your case is built in-lab — coordinator-arranged.</p></div>
+      </li>
+      <li>
+        <div class="day mono">DAY 6/7</div>
+        <div><h4>Final fitting &amp; placement</h4><p>Your new smile, fitted and finished at the clinic.</p></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="itin">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">While You Wait</div>
+      <h2>Your Shanghai stay, handled</h2>
+    </div>
+    <div class="itin-grid">
+      <div class="itin-card"><div class="glyph">→</div><h4>Airport &amp; hotel</h4><p>Pickup and accommodation arranged before you land.</p></div>
+      <div class="itin-card"><div class="glyph">→</div><h4>English-speaking coordinator</h4><p>With you at every clinic visit and throughout your stay.</p></div>
+      <div class="itin-card"><div class="glyph">→</div><h4>Curated itinerary</h4><p>Optional day trips around Shanghai during your free days.</p></div>
+      <div class="itin-card"><div class="glyph">→</div><h4>On-site translation</h4><p>At every appointment, no communication gaps.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="divider">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">At A Glance</div>
+      <h2>How it compares</h2>
+    </div>
+    <table>
+      <thead>
+        <tr><th>Per tooth</th><th>UK Private Clinic</th><th class="highlight-col">Imported Line</th><th>Signature Line</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Price range</td><td>£700 – £1,500</td><td class="highlight-col">£177 – £301</td><td>£536 – £604</td></tr>
+        <tr><td>Material traceability</td><td>Varies by clinic</td><td class="highlight-col">QR-verified</td><td>QR-verified</td></tr>
+        <tr><td>Warranty</td><td>Typically 5–10 yrs</td><td class="highlight-col">5 years</td><td>10 years</td></tr>
+        <tr><td>Wait for appointment</td><td>Weeks to months</td><td class="highlight-col">Booked around your trip</td><td>Booked around your trip</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Questions</div>
+      <h2>What people ask before booking</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <h4>Is this safe? I've heard bad things about overseas dental tourism.</h4>
+        <p>A fair concern. Every material we use comes from internationally recognized manufacturers — VITA, Dentsply Sirona, Ivoclar Vivadent, Wieland — and is QR-code traceable to the source. Dr. Liu Meibo holds internationally recognized DSD and ITI certifications, and your treatment plan and warranty terms are provided in writing before you travel.</p>
+      </div>
+      <div class="faq-item">
+        <h4>What if something goes wrong after I go home?</h4>
+        <p>Your warranty is honored at our Shanghai clinic. If an issue arises within your warranty period, you'll return to Shanghai so the same certified materials and the same doctor who designed your treatment handle the repair — our coordinator will help you plan the trip if this ever comes up.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Do I need to stay in Shanghai the whole time?</h4>
+        <p>No — your two appointments are several days apart, and our team arranges everything in between so you can see the city.</p>
+      </div>
+      <div class="faq-item">
+        <h4>What's included in the price?</h4>
+        <p>Your quoted price includes the initial consultation, X-rays, and temporary veneers during the waiting period. Anything outside the standard plan is discussed and quoted before any extra charge.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta" id="contact">
+  <div class="wrap">
+    <h2>Ready to see what your smile could look like?</h2>
+    <p>Send a few photos on WhatsApp — get a personalized treatment plan and quote within 1 business day.</p>
+    <a class="btn-primary" href="https://wa.me/REPLACE_WITH_NUMBER" target="_blank" rel="noopener">Chat on WhatsApp →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">HeaYee Veneers · Cosmetic &amp; Restorative Dentistry · Consultation only, not a medical diagnosis</div>
+</footer>
+
+</body>
+</html>
