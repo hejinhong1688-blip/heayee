@@ -161,10 +161,15 @@
       }
       .menu-btn {
         display: none;
+        width: 44px;
+        height: 44px;
+        align-items: center;
+        justify-content: center;
         background: none;
         border: 0;
         color: #fff;
         font-size: 25px;
+        cursor: pointer;
       }
       .hero {
         min-height: 100svh;
@@ -621,8 +626,13 @@
         .nav-links.open {
           display: flex;
         }
+        .nav-links > a:not(.btn) {
+          min-height: 44px;
+          display: flex;
+          align-items: center;
+        }
         .menu-btn {
-          display: block;
+          display: flex;
         }
         .doctor-grid,
         .why-grid {
@@ -1081,12 +1091,17 @@
       menuBtn.addEventListener("click", () => {
         const open = navLinks.classList.toggle("open");
         menuBtn.setAttribute("aria-expanded", open);
+        menuBtn.setAttribute(
+          "aria-label",
+          open ? "Close navigation" : "Open navigation",
+        );
         menuBtn.textContent = open ? "\u00d7" : "\u2630";
       });
       navLinks.querySelectorAll("a").forEach((link) =>
         link.addEventListener("click", () => {
           navLinks.classList.remove("open");
           menuBtn.setAttribute("aria-expanded", "false");
+          menuBtn.setAttribute("aria-label", "Open navigation");
           menuBtn.textContent = "\u2630";
         }),
       );
