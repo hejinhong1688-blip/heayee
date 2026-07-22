@@ -496,8 +496,10 @@
       }
       .gallery-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 24px;
+        max-width: 960px;
+        margin: 0 auto;
       }
       .case {
         background: #fff;
@@ -506,39 +508,13 @@
         border: 1px solid var(--line);
       }
       .case-photos {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        position: relative;
         aspect-ratio: 4/3;
       }
-      .case-photo {
-        position: relative;
-        background-position: center;
-        background-size: cover;
-      }
-      .case-photo.before {
-        background-image:
-          linear-gradient(rgba(11, 31, 58, 0.12), rgba(11, 31, 58, 0.12)),
-          url("/images/before-1.jpg");
-        filter: saturate(0.75);
-      }
-      .case-photo.after {
-        background-image: url("/images/after-1.jpg");
-      }
-      .case:nth-child(2) .before {
-        background-image:
-          linear-gradient(rgba(11, 31, 58, 0.12), rgba(11, 31, 58, 0.12)),
-          url("/images/before-2.jpg");
-      }
-      .case:nth-child(2) .after {
-        background-image: url("/images/after-2.jpg");
-      }
-      .case:nth-child(3) .before {
-        background-image:
-          linear-gradient(rgba(11, 31, 58, 0.12), rgba(11, 31, 58, 0.12)),
-          url("/images/before-3.jpg");
-      }
-      .case:nth-child(3) .after {
-        background-image: url("/images/after-3.jpg");
+      .case-photos img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
       .case-label {
         position: absolute;
@@ -551,6 +527,9 @@
         letter-spacing: 0.12em;
         padding: 5px 9px;
         border-radius: 999px;
+      }
+      .case-label.after {
+        left: calc(50% + 10px);
       }
       .case-caption {
         padding: 20px 22px;
@@ -1002,44 +981,40 @@
             <div class="eyebrow">Real Results</div>
             <h2 class="section-title">Smile Transformations</h2>
             <p class="section-copy">
-              Every smile is designed around the individual. Replace the
-              placeholders below with authorized, unedited clinical case
-              photography.
+              Every smile is designed around the individual. These clinical
+              cases show individual outcomes; results vary by patient.
             </p>
           </div>
           <div class="gallery-grid">
             <article class="case reveal">
               <div class="case-photos">
-                <div class="case-photo before">
-                  <span class="case-label">Before</span>
-                </div>
-                <div class="case-photo after">
-                  <span class="case-label">After</span>
-                </div>
+                <img
+                  src="/assets/cases/smile-case-01.jpg"
+                  alt="Before and after porcelain veneer case showing natural smile refinement"
+                  width="1200"
+                  height="900"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span class="case-label">Before</span>
+                <span class="case-label after">After</span>
               </div>
               <div class="case-caption">Natural Smile Refinement</div>
             </article>
             <article class="case reveal">
               <div class="case-photos">
-                <div class="case-photo before">
-                  <span class="case-label">Before</span>
-                </div>
-                <div class="case-photo after">
-                  <span class="case-label">After</span>
-                </div>
+                <img
+                  src="/assets/cases/smile-case-02.jpg"
+                  alt="Before and after porcelain veneer case showing improved proportion and alignment"
+                  width="1200"
+                  height="900"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span class="case-label">Before</span>
+                <span class="case-label after">After</span>
               </div>
               <div class="case-caption">Proportion &amp; Alignment</div>
-            </article>
-            <article class="case reveal">
-              <div class="case-photos">
-                <div class="case-photo before">
-                  <span class="case-label">Before</span>
-                </div>
-                <div class="case-photo after">
-                  <span class="case-label">After</span>
-                </div>
-              </div>
-              <div class="case-caption">Complete Smile Design</div>
             </article>
           </div>
         </div>
