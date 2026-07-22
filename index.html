@@ -290,15 +290,17 @@
       .doctor-photo {
         aspect-ratio: 4/5;
         border-radius: var(--radius);
-        background:
-          linear-gradient(
-            145deg,
-            rgba(200, 169, 106, 0.12),
-            rgba(11, 31, 58, 0.12)
-          ),
-          url("/assets/dr-liu-meibo-portrait-navy.png") center top/cover no-repeat;
+        overflow: hidden;
+        background: #102b4f;
         box-shadow: 0 24px 80px rgba(0, 0, 0, 0.3);
         border: 1px solid rgba(255, 255, 255, 0.14);
+      }
+      .doctor-photo img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
       }
       .doctor .section-title {
         color: #fff;
@@ -800,11 +802,16 @@
       </section>
       <section class="section doctor" id="doctor">
         <div class="wrap doctor-grid">
-          <div
-            class="doctor-photo reveal"
-            role="img"
-            aria-label="Portrait of Dr. Liu Meibo"
-          ></div>
+          <picture class="doctor-photo reveal">
+            <img
+              src="/assets/dr-liu-meibo-portrait-navy.png"
+              alt="Dr. Liu Meibo, cosmetic dentistry specialist"
+              width="1086"
+              height="1448"
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
           <div class="reveal">
             <div class="eyebrow">Meet Your Smile Designer</div>
             <h2 class="section-title">Dr. Liu Meibo</h2>
