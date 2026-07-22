@@ -133,9 +133,8 @@
   .doctor-photo{
     aspect-ratio:3/4; background:var(--jade);
     border:1px solid rgba(250,246,239,0.25);
-    display:flex; align-items:center; justify-content:center;
-    font-family:'IBM Plex Mono', monospace; font-size:12px; color:rgba(250,246,239,0.5);
-    text-align:center; padding:20px;
+    display:block; width:100%; height:auto; object-fit:cover;
+    object-position:center top;
   }
   .doctor h2{color:var(--white); font-size:clamp(24px,3vw,30px); margin-bottom:4px;}
   .doctor .title{font-size:14.5px; color:var(--glaze-soft); margin-bottom:24px;}
@@ -304,7 +303,7 @@
 
 <section class="doctor">
   <div class="wrap doctor-grid">
-    <div class="doctor-photo">Doctor portrait<br>placeholder — replace with<br>authorized clinic photo</div>
+    <img class="doctor-photo" src="assets/dr-liu-meibo-portrait.png" alt="Dr. Liu Meibo, cosmetic and restorative dentist" width="1086" height="1448" loading="lazy" decoding="async">
     <div>
       <div class="eyebrow">Your Doctor</div>
       <h2>Dr. Liu Meibo</h2>
